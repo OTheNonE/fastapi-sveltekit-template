@@ -1,0 +1,1 @@
+import"../chunks/disclose-version.DmMw9pt8.js";import{D as n}from"../chunks/debug.Xrctj--H.js";async function e({fetch:t}){return{contact:await(await t("/api/contact")).json()}}const s=Object.freeze(Object.defineProperty({__proto__:null,load:e},Symbol.toStringTag,{value:"Module"}));function p(t,o){const{contact:a}=o.data;n(t,{data:a})}export{p as component,s as universal};

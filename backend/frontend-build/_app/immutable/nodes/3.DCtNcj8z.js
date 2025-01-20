@@ -1,0 +1,1 @@
+import"../chunks/disclose-version.DmMw9pt8.js";import{D as e}from"../chunks/debug.Xrctj--H.js";async function n({fetch:o}){return{about:await(await o("/api/about")).json()}}const u=Object.freeze(Object.defineProperty({__proto__:null,load:n},Symbol.toStringTag,{value:"Module"}));function p(o,t){const{about:a}=t.data;e(o,{data:a})}export{p as component,u as universal};
