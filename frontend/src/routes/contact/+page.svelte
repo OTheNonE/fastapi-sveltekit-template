@@ -1,10 +1,27 @@
 <script lang="ts">
 
-    import Debug from "$lib/components/debug.svelte"
-
     const { data } = $props()
     const { contact } = data
 
 </script>
 
-<Debug data={contact} />
+
+{#if contact}
+    <div>
+        <label>
+            Name
+            <input value={contact.name}>
+        </label>
+    </div>
+    <div>
+        <label>
+            Age
+            <input value={contact.age}>
+        </label>
+    </div>
+{:else}
+    <div>
+        Failed fetching contacts.
+    </div>
+{/if}
+

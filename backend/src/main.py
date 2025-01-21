@@ -11,4 +11,4 @@ app = FastAPI()
 app.include_router(api.router, prefix="/api")
 
 if RUN_MODE == "run":
-    app.mount("/", StaticFiles(directory="./frontend-build", html=True), name="SPA")
+    app.mount("/", StaticFiles(directory="./build", html=True), name="SPA")
