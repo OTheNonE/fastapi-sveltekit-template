@@ -1,4 +1,4 @@
-import { loadOpenAPI } from "$lib/open-api"
+import { loadOpenAPI } from "$lib/openapi"
 
 export const load = loadOpenAPI(async ({ open_api }) => {
 

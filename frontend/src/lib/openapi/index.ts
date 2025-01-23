@@ -1,13 +1,10 @@
-import type { paths } from "$lib/generated/types.js"
+import type { paths } from "$lib/generated/openapi"
 import type { ServerLoad, ServerLoadEvent } from "@sveltejs/kit"
-import openApiCreateClient, { type Client } from "openapi-fetch"
+import openApiCreateClient, { type Client,  } from "openapi-fetch"
 
 type Fetch = (input: Request) => Promise<Response>
 
-/**
- * The OpenAPI client for typesafe fetching on API's supporting the OpenAPI standard.
- */
-export type OpenAPIClient = Client<paths>
+type OpenApiServerLoad = (event: Parameters<ServerLoad>[0] & OpenAPIClientEvent) => ReturnType<ServerLoad>
 
 interface OpenAPIClientEvent {
     /**
@@ -16,13 +13,15 @@ interface OpenAPIClientEvent {
     open_api: OpenAPIClient
 }
 
+/**
+ * The OpenAPI client for typesafe fetching on API's supporting the OpenAPI standard.
+ */
+export type OpenAPIClient = Client<paths>
+
 export function createOpenApiClient(fetch: Fetch) {
     const client = openApiCreateClient<paths>({ fetch })
     return client
 }
-
-
-type OpenApiServerLoad = (event: Parameters<ServerLoad>[0] & OpenAPIClientEvent) => ReturnType<ServerLoad>
 
 /**
  * Loads the OpenAPI client and sets it as part of the event parameter.

@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"generate-openapi": "npx openapi-typescript http://localhost:8000/openapi.json -o src/lib/generated/types.d.ts",
+		"generate-openapi": "npx openapi-typescript http://localhost:8000/openapi.json -o src/lib/generated/openapi.d.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
