@@ -1,14 +1,13 @@
-import { createClient } from "$lib/fetch"
+import { loadOpenAPI } from "$lib/open-api"
 
-export async function load({ fetch }) {
+export const load = loadOpenAPI(async ({ open_api }) => {
 
-    const client = createClient(fetch)
-
-    const { data: contact, error, response } = await client.GET("/api/contact")
+    const { data: contact, error, response } = await open_api.GET("/api/contact")
 
     if (error) {
         return { contact: null }
     }
 
     return { contact }
-}
+})
+
