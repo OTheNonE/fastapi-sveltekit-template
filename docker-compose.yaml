@@ -1,9 +1,13 @@
 name: fastapi-sveltekit-template
 
 services:
-  server:
-    build: .
+
+  spa:
+    build: ./spa
     ports:
-      - "${SERVER_PORT}:8000"
+      - "${SERVER_PORT}:80"
+
+  api:
+    build: ./api
     env_file:
       - .env
