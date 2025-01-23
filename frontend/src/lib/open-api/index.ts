@@ -30,7 +30,7 @@ type OpenApiServerLoad = (event: Parameters<ServerLoad>[0] & OpenAPIClientEvent)
 export function loadOpenAPI<S extends OpenApiServerLoad, E extends ServerLoadEvent>(cb: S) {
     return async (event: E) => {
         const open_api = createOpenApiClient(event.fetch)
-        const loadFunction = await cb({ ...event, open_api })
-        return loadFunction
+        const data = await cb({ ...event, open_api })
+        return data
     }
 }
