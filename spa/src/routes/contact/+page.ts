@@ -1,8 +1,8 @@
 import { loadOpenAPI } from "$lib/openapi"
 
-export const load = loadOpenAPI(async ({ open_api }) => {
+export const load = loadOpenAPI(async ({ openapi }) => {
 
-    const { data: contact, error, response } = await open_api.GET("/api/contact")
+    const { data: contact, error, response } = await openapi.GET("/api/contact")
 
     if (error) {
         return { contact: null }

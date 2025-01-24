@@ -10,7 +10,7 @@ interface OpenAPIClientEvent {
     /**
      * The OpenAPI client for typesafe fetching on API's supporting the OpenAPI standard.
      */
-    open_api: OpenAPIClient
+    openapi: OpenAPIClient
 }
 
 /**
@@ -28,8 +28,8 @@ export function createOpenApiClient(fetch: Fetch) {
  */
 export function loadOpenAPI<S extends OpenApiServerLoad, E extends ServerLoadEvent>(cb: S) {
     return async (event: E) => {
-        const open_api = createOpenApiClient(event.fetch)
-        const data = await cb({ ...event, open_api })
+        const openapi = createOpenApiClient(event.fetch)
+        const data = await cb({ ...event, openapi })
         return data
     }
 }
