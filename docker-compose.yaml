@@ -2,8 +2,8 @@ name: fastapi-sveltekit-template
 
 services:
 
-  spa:
-    build: ./spa
+  proxy:
+    build: .
     ports:
       - "${SERVER_PORT}:80"
 
