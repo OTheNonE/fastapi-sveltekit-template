@@ -13,13 +13,15 @@ interface OpenAPIClientEvent {
     openapi: OpenAPIClient
 }
 
+export type APIRoutes = keyof paths
+
 /**
  * The OpenAPI client for typesafe fetching on API's supporting the OpenAPI standard.
  */
 export type OpenAPIClient = Client<paths>
 
-export function createOpenApiClient(fetch: Fetch) {
-    const client = openApiCreateClient<paths>({ fetch })
+export function createOpenApiClient(event: { fetch: Fetch }) {
+    const client = openApiCreateClient<paths>(event)
     return client
 }
 
@@ -28,7 +30,7 @@ export function createOpenApiClient(fetch: Fetch) {
  */
 export function loadOpenAPI<S extends OpenApiServerLoad, E extends ServerLoadEvent>(cb: S) {
     return async (event: E) => {
-        const openapi = createOpenApiClient(event.fetch)
+        const openapi = createOpenApiClient(event)
         const data = await cb({ ...event, openapi })
         return data
     }

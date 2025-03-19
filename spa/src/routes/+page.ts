@@ -1,9 +1,14 @@
-export async function load({ fetch }) {
+import { createOpenApiClient } from "$lib/openapi"
 
-    const response = await fetch("/api/hello")
+export const load = async (event) => {
+    const openapi = createOpenApiClient(event)
 
-    const result = await response.json()
+    const { data, error } = await openapi.GET("/api/hello")
 
-    return { result }
+    if (error) {
+        return { result: null }
+    }
+
+    return { result: data }
 
 }

@@ -2,9 +2,10 @@
 
     import Debug from "$lib/components/debug.svelte"
 
+
     const { data } = $props()
-    const { about } = data
+    const { user } = data
 
 </script>
 
-<Debug data={about} />
+<Debug data={user} />

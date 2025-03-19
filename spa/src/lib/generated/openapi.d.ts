@@ -11,8 +11,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Oauth Login */
-        get: operations["oauth_login_api_oauth_login_get"];
+        /** Login */
+        get: operations["login_api_oauth_login_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -28,8 +28,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Oauth Login Callback */
-        get: operations["oauth_login_callback_api_oauth_login_callback_get"];
+        /** Login Callback */
+        get: operations["login_callback_api_oauth_login_callback_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -45,8 +45,25 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Oauth Logout */
-        get: operations["oauth_logout_api_oauth_logout_get"];
+        /** Logout */
+        get: operations["logout_api_oauth_logout_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/oauth/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get User */
+        get: operations["get_user_api_oauth_profile_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -111,13 +128,20 @@ export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         /** User */
-        User: {
+        src__routers__api__User: {
             /** Name */
             name: string;
             /** Age */
             age: number;
             /** User Id */
             user_id: number;
+        };
+        /** User */
+        src__routers__oauth__oauth__User: {
+            /** Name */
+            name: string;
+            /** Email */
+            email: string;
         };
     };
     responses: never;
@@ -128,7 +152,7 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    oauth_login_api_oauth_login_get: {
+    login_api_oauth_login_get: {
         parameters: {
             query?: never;
             header?: never;
@@ -148,7 +172,7 @@ export interface operations {
             };
         };
     };
-    oauth_login_callback_api_oauth_login_callback_get: {
+    login_callback_api_oauth_login_callback_get: {
         parameters: {
             query?: never;
             header?: never;
@@ -168,7 +192,7 @@ export interface operations {
             };
         };
     };
-    oauth_logout_api_oauth_logout_get: {
+    logout_api_oauth_logout_get: {
         parameters: {
             query?: never;
             header?: never;
@@ -184,6 +208,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": unknown;
+                };
+            };
+        };
+    };
+    get_user_api_oauth_profile_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["src__routers__oauth__oauth__User"];
                 };
             };
         };
@@ -223,7 +267,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["User"];
+                    "application/json": components["schemas"]["src__routers__api__User"];
                 };
             };
         };
