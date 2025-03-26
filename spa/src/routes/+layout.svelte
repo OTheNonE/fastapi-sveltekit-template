@@ -20,18 +20,13 @@
 		}
 	] as const
 
-	type Navigation = {
-		href: APIRoutes
-		title: string
-	}
-
-	const login_nav: Navigation = {
-		href: "/api/oauth/login",
+	const login_nav = {
+		href: "/api/oauth/login" satisfies APIRoutes,
 		title: "Login"
 	} as const
 
-	const logout_nav: Navigation = {
-		href: "/api/oauth/logout",
+	const logout_nav = {
+		href: "/api/oauth/logout" satisfies APIRoutes,
 		title: "Logout"
 	} as const
 
