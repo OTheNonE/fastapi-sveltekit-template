@@ -3,7 +3,7 @@
 	import '../app.css';
 	
 	let { children, data } = $props();
-	const { user } = data
+	// const { user } = data
 
 	const navs = [
 		{
@@ -40,7 +40,7 @@
 			{/each}	
 		</div>
 
-		<div class="ml-auto flex gap-2">
+		<!-- <div class="ml-auto flex gap-2">
 			{#if user}
 				{@const { href, title } = logout_nav}
 				<div> Welcome {user.name} ({user.email}) </div>
@@ -49,8 +49,7 @@
 				{@const { href, title } = login_nav}
 				<a {href}> {title} </a>
 			{/if}
-
-		</div>
+		</div> -->
 	</div>
 </div>
 

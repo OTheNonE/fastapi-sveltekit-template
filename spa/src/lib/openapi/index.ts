@@ -20,8 +20,16 @@ export type APIRoutes = keyof paths
  */
 export type OpenAPIClient = Client<paths>
 
-export function createOpenApiClient(event: { fetch: Fetch }) {
-    const client = openApiCreateClient<paths>(event)
+export function createOpenApiClient(event?: { 
+    fetch?: Fetch, 
+    baseUrl?: string
+}) {
+
+    const baseUrl = event?.baseUrl ?? "http://localhost:8000"
+    
+    const client = openApiCreateClient<paths>({ 
+        baseUrl
+    })
     return client
 }
 
