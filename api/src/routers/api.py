@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.responses import RedirectResponse
 from .oauth import oauth
 from pydantic import BaseModel
 
@@ -20,6 +21,11 @@ async def contact():
 
     user = User(name="Hanus", age=8, user_id=12345678)
     return user
+
+
+@router.get("/redirect")
+async def contact():
+    return RedirectResponse("https://github.com")
 
 @router.get("/about")
 async def about():

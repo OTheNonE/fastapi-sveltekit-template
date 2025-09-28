@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import { invalidateAll } from '$app/navigation';
     import { getRequestEvent } from '$app/server';
     import Debug from '$lib/components/debug.svelte';
@@ -19,7 +20,6 @@
 </script>
 
 <h1> Home </h1>
-
 
 <div>
     <svelte:boundary onerror={(err) => console.log(err)}>

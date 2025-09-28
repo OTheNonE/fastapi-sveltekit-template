@@ -1,11 +1,11 @@
 
 
-// export const load = async ({ fetch }) => {
-//     const result = await fetch("https://api.something.dom/api/contact")
-//     console.log(result.url)
+export const load = async ({ fetch }) => {
 
-//     const json = await result.json()
-//     console.log(json)
+    // I have access to SvelteKit's `fetch` that is captured by `handleFetch`.
+    const result = await fetch("https://api.my-app.com/api/contact")
 
-//     return { contact: json }
-// }
+    const contact = await result.json()
+
+    return { contact }
+}
