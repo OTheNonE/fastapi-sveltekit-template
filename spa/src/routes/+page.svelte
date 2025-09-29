@@ -1,21 +1,18 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
     import { invalidateAll } from '$app/navigation';
     import { getRequestEvent } from '$app/server';
     import Debug from '$lib/components/debug.svelte';
     import { createOpenApiClient } from '$lib/openapi/index.js';
     import { getContact } from '$lib/remote-functions/data.remote.js';
+    import { getApiUrl } from '$lib/utils/browser.js';
 
     const { data } = $props()
 
-    const something = $derived(getContact())
+    // const something = $derived(getContact())
 
-    const client = createOpenApiClient({ baseUrl: "https://api.something.dom" })
+    const client = createOpenApiClient({ baseUrl: getApiUrl() })
 
-    async function getData() {
-        const { fetch } = getRequestEvent()
-        const result = await fetch("http://localhost:5173/api/contact")
-    }
+    const something = $derived(client.GET("/api/contact"))
 
 </script>
 
@@ -37,7 +34,7 @@
         {/snippet}
 
         <p> This is my contact: </p>
-        <Debug data={await something}/>
+        <Debug data={(await something).data}/>
 
         <button onclick={() => invalidateAll()}> Refresh </button>
 

@@ -1,4 +1,4 @@
-import { getRequestEvent, query } from "$app/server";
+import { getRequestEvent, query, form, command } from "$app/server";
 
 export const getContact = query(async () => {
     const { fetch } = getRequestEvent()
